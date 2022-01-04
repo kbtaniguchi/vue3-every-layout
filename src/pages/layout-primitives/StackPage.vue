@@ -53,9 +53,15 @@ const data = reactive<{
           <label>splitAfter</label>
           <input type="number" v-model="data.splitAfter"/>
         </VStack>
-        <a href="https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/pages/layout-primitives/StackPage.vue">
-          source code link
-        </a>
+        <h3>Source</h3>
+        <VStack space="var(--s-5)">
+          <a href="https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/components/layouts/VStack.vue">
+            this component source
+          </a>
+          <a href="https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/pages/layout-primitives/StackPage.vue">
+            this page source
+          </a>
+        </VStack>
       </VStack>
     </div>
   </VSidebar>
