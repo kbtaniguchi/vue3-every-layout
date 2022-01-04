@@ -1,46 +1,22 @@
 <script setup lang="ts">
-import {insertCSS, getEasyUID} from "@/assets/style/script";
-import {onMounted, useCssModule} from "vue";
-
-const componentId = getEasyUID();
 const props = withDefaults(defineProps<{
   space?: string;
   recursive?: boolean;
-  splitAfter?: number;
+  splitAfter?: number; // now max 10
 }>(), {
   space: 'var(--s0)',
   recursive: false,
   splitAfter: 0
 });
-
-onMounted(() => {
-  const thisStyle = useCssModule();
-  const space = `
-  .${thisStyle.stack}[data-component-id="${componentId}"] ${props.recursive ? '' : '>'} * + * {
-    margin-top: ${props.space};
-  }
-  `;
-  insertCSS(space);
-
-  if (!props.splitAfter) return;
-  const adjustHeight = `
-  .${thisStyle.stack}[data-component-id="${componentId}"]:only-child {
-    height: 100%
-  }
-  `;
-  const split = `
-  .${thisStyle.stack}[data-component-id="${componentId}"] > :nth-child(${props.splitAfter}) {
-    margin-bottom: auto;
-  }
-  `;
-  insertCSS(adjustHeight);
-  insertCSS(split);
-});
 </script>
 
 <template>
-  <div :data-component-id="componentId"
-       :class="$style.stack">
+  <div :class="[
+           $style.stack,
+           props.recursive ? $style.recursive : '',
+           props.splitAfter ? $style.splitAfter : '',
+           props.splitAfter ? $style[`splitAfter${props.splitAfter}`] : ''
+        ]">
     <slot/>
   </div>
 </template>
@@ -50,5 +26,27 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.stack > * + *,
+.recursive * + * {
+  margin-top: v-bind("props.space");
+}
+
+.splitAfter:only-child {
+  height: 100%
+}
+
+.splitAfter1 > :nth-child(1),
+.splitAfter2 > :nth-child(2),
+.splitAfter3 > :nth-child(3),
+.splitAfter4 > :nth-child(4),
+.splitAfter5 > :nth-child(5),
+.splitAfter6 > :nth-child(6),
+.splitAfter7 > :nth-child(7),
+.splitAfter8 > :nth-child(8),
+.splitAfter9 > :nth-child(9),
+.splitAfter10 > :nth-child(10) {
+  margin-bottom: auto;
 }
 </style>

@@ -102,3 +102,9 @@ ul, ol {
     outline-offset: var(--s-3);
     outline-color: var(--informative-color-1);
 }
+
+/* utilities */
+.with-outline {
+    outline-color: var(--gray0);
+    outline-style: dashed;
+}

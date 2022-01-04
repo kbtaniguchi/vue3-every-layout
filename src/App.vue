@@ -14,6 +14,11 @@ const onHome = (): boolean => {
   return useRoute().fullPath === '/';
 };
 
+const thisPageCategory = (): string | undefined => {
+  return useRoute().meta.category;
+
+};
+
 const toggleMenu = (): void => {
   menuOpened.value = !menuOpened.value;
 };
@@ -23,53 +28,50 @@ const toggleMenu = (): void => {
   <VSidebar>
     <nav v-if="menuOpened"
          :class="$style.menu">
-      <VBox height-stretch
-            padding="var(--s1)"
-            border-width="0">
-        <VStack :split-after="7">
-          <h1>
-            <router-link to="/">Vue3 Every Layout</router-link>
-          </h1>
-          <h2>Layout Primitives</h2>
+      <VStack :split-after="7">
+        <h1>
+          <router-link to="/">Vue3 Every Layout</router-link>
+        </h1>
+        <h2>Layout Primitives</h2>
+        <ul>
+          <li>
+            <router-link to="/stack">VStack</router-link>
+          </li>
+          <li>VBox</li>
+          <li>VCenter</li>
+          <li>VCluster</li>
+          <li>VSidebar</li>
+          <li>VSwitcher</li>
+          <li>VCover</li>
+          <li>VGrid</li>
+          <li>VFrame</li>
+          <li>VReel</li>
+          <li>VImposter</li>
+          <li>VIcon</li>
+        </ul>
+        <h2>Composition Samples</h2>
+        <ul>
+          <li>under construction...</li>
+        </ul>
+        <h2>Appendix</h2>
+        <ul>
+          <li>
+            <router-link to="/modular-scale">Modular Scale</router-link>
+          </li>
+          <li>
+            <router-link to="/color-palette">Color Palette</router-link>
+          </li>
+        </ul>
+        <aside :class="$style.poweredBy">
+          powered by:
           <ul>
-            <li>under construction...</li>
-<!--            <li>VStack</li>-->
-<!--            <li>VBox</li>-->
-<!--            <li>VCenter</li>-->
-<!--            <li>VCluster</li>-->
-<!--            <li>VSidebar</li>-->
-<!--            <li>VSwitcher</li>-->
-<!--            <li>VCover</li>-->
-<!--            <li>VGrid</li>-->
-<!--            <li>VFrame</li>-->
-<!--            <li>VReel</li>-->
-<!--            <li>VImposter</li>-->
-<!--            <li>VIcon</li>-->
+            <li><a href="https://v3.ja.vuejs.org/">Vue.js</a></li>
+            <li><a href="https://every-layout.dev/">Every Layout</a></li>
+            <li><a href="https://www.refactoringui.com/">RefactoringUI</a></li>
+            <li><a href="https://hue360.herokuapp.com/">HUE/360</a></li>
           </ul>
-          <h2>Composition Samples</h2>
-          <ul>
-            <li>under construction...</li>
-          </ul>
-          <h2>Appendix</h2>
-          <ul>
-            <li>
-              <router-link to="/modular-scale">Modular Scale</router-link>
-            </li>
-            <li>
-              <router-link to="/color-palette">Color Palette</router-link>
-            </li>
-          </ul>
-          <aside :class="$style.poweredBy">
-            powered by:
-            <ul>
-              <li><a href="https://v3.ja.vuejs.org/">Vue.js</a></li>
-              <li><a href="https://every-layout.dev/">Every Layout</a></li>
-              <li><a href="https://www.refactoringui.com/">RefactoringUI</a></li>
-              <li><a href="https://hue360.herokuapp.com/">HUE/360</a></li>
-            </ul>
-          </aside>
-        </VStack>
-      </VBox>
+        </aside>
+      </VStack>
     </nav>
     <main :class="$style.mainContent">
       <div v-if="!onHome()"
@@ -80,6 +82,7 @@ const toggleMenu = (): void => {
           <VCluster>
             <span><router-link to="/">Home</router-link></span>
             <span>/</span>
+            <span v-if="thisPageCategory()">{{ thisPageCategory() }}</span>
           </VCluster>
           <button @click="toggleMenu">
             <VIcon>
@@ -91,10 +94,7 @@ const toggleMenu = (): void => {
           </button>
         </VCluster>
       </div>
-      <VBox padding="var(--s1)"
-            border-width="0">
-        <router-view/>
-      </VBox>
+      <router-view/>
     </main>
   </VSidebar>
 </template>
@@ -102,6 +102,7 @@ const toggleMenu = (): void => {
 <style module>
 .menu {
   outline: var(--gray-1) dashed 1px;
+  padding: var(--s1);
 }
 
 .menu h1 {
@@ -121,12 +122,13 @@ const toggleMenu = (): void => {
 }
 
 .toolbar {
-  padding-top: var(--s0);
-  padding-left: var(--s0);
-  padding-right: var(--s0);
+  margin-left: calc(var(--s0) * -1);
+  margin-right: calc(var(--s0) * -1);
+  padding-bottom: var(--s0);
 }
 
 .mainContent {
+  padding: var(--s1);
   min-height: 100vh;
 }
 </style>

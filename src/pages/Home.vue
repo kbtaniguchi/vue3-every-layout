@@ -4,7 +4,7 @@ import VCover from "@/components/layouts/VCover.vue";
 
 <template>
   <VCover centered="h2"
-          min-height="80vh">
+          min-height="95vh">
     <h2>Home</h2>
   </VCover>
 </template>
