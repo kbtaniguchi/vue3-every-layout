@@ -20,7 +20,7 @@ const data = reactive<{
 
 <template>
   <h2 class="page-title">
-    Box
+    Cover
   </h2>
   <VSidebar
     side-width="50%"
