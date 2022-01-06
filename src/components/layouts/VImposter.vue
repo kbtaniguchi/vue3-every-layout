@@ -7,22 +7,24 @@ const props = withDefaults(defineProps<{
   breakout: false,
   margin: '0px',
   fixed: false
-});
+})
 </script>
 
 <template>
-  <div :class="$style.imposter"
-       :style="{
-          ...props.breakout ? {} : {
-            maxWidth: `calc(100% - (${props.margin} * 2))`,
-            maxHeight: `calc(100% - (${props.margin} * 2))`,
-            overflow: 'auto'
-          },
-          ...props.fixed ? {
-            position: 'fixed'
-          } : {}
-       }">
-    <slot/>
+  <div
+    :class="$style.imposter"
+    :style="{
+      ...props.breakout ? {} : {
+        maxWidth: `calc(100% - (${props.margin} * 2))`,
+        maxHeight: `calc(100% - (${props.margin} * 2))`,
+        overflow: 'auto'
+      },
+      ...props.fixed ? {
+        position: 'fixed'
+      } : {}
+    }"
+  >
+    <slot />
   </div>
 </template>
 

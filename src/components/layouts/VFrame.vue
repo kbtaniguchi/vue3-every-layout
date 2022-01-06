@@ -2,17 +2,19 @@
 const props = withDefaults(defineProps<{
   ratio?: string;
 }>(), {
-  ratio: "16:9"
-});
-const ratioSplit = props.ratio.split(":");
+  ratio: '16:9'
+})
+const ratioSplit = props.ratio.split(':')
 </script>
 
 <template>
-  <div :class="$style.frame"
-       :style="{
-  paddingBottom: `calc(${ratioSplit[1]} / ${ratioSplit[0]} * 100%)`
-}">
-    <slot/>
+  <div
+    :class="$style.frame"
+    :style="{
+      paddingBottom: `calc(${ratioSplit[1]} / ${ratioSplit[0]} * 100%)`
+    }"
+  >
+    <slot />
   </div>
 </template>
 

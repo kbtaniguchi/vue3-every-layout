@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import VStack from "@/components/layouts/VStack.vue";
-import VBox from "@/components/layouts/VBox.vue";
-import VSidebar from "@/components/layouts/VSidebar.vue";
-import {reactive} from "vue";
+import VStack from '@/components/layouts/VStack.vue'
+import VBox from '@/components/layouts/VBox.vue'
+import VSidebar from '@/components/layouts/VSidebar.vue'
+import { reactive } from 'vue'
 
 const data = reactive<{
   space: string;
@@ -12,19 +12,25 @@ const data = reactive<{
   space: 'var(--s0)',
   recursive: false,
   splitAfter: 0
-});
+})
 </script>
 
 <template>
-  <h2 :class="$style.title">Stack</h2>
-  <VSidebar side-width="50%"
-            content-min="40%"
-            space="var(--s1)">
+  <h2 :class="$style.title">
+    Stack
+  </h2>
+  <VSidebar
+    side-width="50%"
+    content-min="40%"
+    space="var(--s1)"
+  >
     <div>
-      <VStack class="with-outline"
-              :space="data.space"
-              :recursive="data.recursive"
-              :split-after="data.splitAfter">
+      <VStack
+        class="with-outline"
+        :space="data.space"
+        :recursive="data.recursive"
+        :split-after="data.splitAfter"
+      >
         <VBox>BOX</VBox>
         <VBox>BOX</VBox>
         <VBox>BOX</VBox>
@@ -43,15 +49,24 @@ const data = reactive<{
         <h3>Props</h3>
         <VStack space="var(--s-5)">
           <label>space</label>
-          <input type="text" v-model="data.space"/>
+          <input
+            v-model="data.space"
+            type="text"
+          >
         </VStack>
         <VStack space="var(--s-5)">
           <label>recursive</label>
-          <input type="checkbox" v-model="data.recursive"/>
+          <input
+            v-model="data.recursive"
+            type="checkbox"
+          >
         </VStack>
         <VStack space="var(--s-5)">
           <label>splitAfter</label>
-          <input type="number" v-model="data.splitAfter"/>
+          <input
+            v-model="data.splitAfter"
+            type="number"
+          >
         </VStack>
         <h3>Source</h3>
         <VStack space="var(--s-5)">

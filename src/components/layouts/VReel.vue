@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {getEasyUID, insertCSS} from "@/assets/style/script";
-import {onMounted, useCssModule} from "vue";
+import { getEasyUID, insertCSS } from '@/assets/style/script'
+import { onMounted, useCssModule } from 'vue'
 
-const componentId = getEasyUID();
+const componentId = getEasyUID()
 const props = withDefaults(defineProps<{
   itemWidth?: string;
   space?: string;
@@ -13,10 +13,10 @@ const props = withDefaults(defineProps<{
   space: 'var(--s0)',
   height: 'auto',
   noBar: false
-});
+})
 
 onMounted(() => {
-  const thisStyle = useCssModule();
+  const thisStyle = useCssModule()
   const item = `
   .${thisStyle.reel}[data-component-id="${componentId}"] > * {
     margin: ${props.space};
@@ -36,22 +36,24 @@ onMounted(() => {
     flex-basis: ${props.space};
   }
   `
-  insertCSS(item);
-  insertCSS(gap);
-  insertCSS(lastItemSpace);
-});
+  insertCSS(item)
+  insertCSS(gap)
+  insertCSS(lastItemSpace)
+})
 </script>
 
 <template>
-  <div :data-component-id="componentId"
-       :class="[
+  <div
+    :data-component-id="componentId"
+    :class="[
       $style.reel,
-      props.noBar ?  $style.noBar : ''
-      ]"
-       :style="{
+      props.noBar ? $style.noBar : ''
+    ]"
+    :style="{
       height: props.height
-      }">
-    <slot/>
+    }"
+  >
+    <slot />
   </div>
 </template>
 

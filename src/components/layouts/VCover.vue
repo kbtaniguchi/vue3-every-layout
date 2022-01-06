@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import {insertCSS, getEasyUID} from "@/assets/style/script";
-import {onMounted, useCssModule} from "vue";
+import { insertCSS, getEasyUID } from '@/assets/style/script'
+import { onMounted, useCssModule } from 'vue'
 
-const componentId = getEasyUID();
+const componentId = getEasyUID()
 const props = withDefaults(defineProps<{
   centered?: string,
   space?: string,
   minHeight?: string,
   noPad?: boolean
 }>(), {
-  centered: "h1",
-  space: "var(--s0)",
-  minHeight: "100vh",
+  centered: 'h1',
+  space: 'var(--s0)',
+  minHeight: '100vh',
   noPad: false
-});
+})
 
 onMounted(() => {
-  const thisStyle = useCssModule();
+  const thisStyle = useCssModule()
   const baseMargin = `
   .${thisStyle.cover}[data-component-id="${componentId}"] > * {
     margin-top: ${props.space};
@@ -39,21 +39,23 @@ onMounted(() => {
     margin-bottom: auto;
   }
   `
-  insertCSS(baseMargin);
-  insertCSS(adjustFirstChildMargin);
-  insertCSS(adjustLastChildMargin);
-  insertCSS(adjustTargetMargin);
-});
+  insertCSS(baseMargin)
+  insertCSS(adjustFirstChildMargin)
+  insertCSS(adjustLastChildMargin)
+  insertCSS(adjustTargetMargin)
+})
 </script>
 
 <template>
-  <div :data-component-id="componentId"
-       :class="$style.cover"
-       :style="{
-  minHeight: props.minHeight,
-  padding: props.noPad ? 0 : props.space
-}">
-    <slot/>
+  <div
+    :data-component-id="componentId"
+    :class="$style.cover"
+    :style="{
+      minHeight: props.minHeight,
+      padding: props.noPad ? 0 : props.space
+    }"
+  >
+    <slot />
   </div>
 </template>
 

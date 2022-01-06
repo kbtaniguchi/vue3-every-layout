@@ -7,17 +7,19 @@ const props = withDefaults(defineProps<{
   space: 'var(--s0)',
   recursive: false,
   splitAfter: 0
-});
+})
 </script>
 
 <template>
-  <div :class="[
-           $style.stack,
-           props.recursive ? $style.recursive : '',
-           props.splitAfter ? $style.splitAfter : '',
-           props.splitAfter ? $style[`splitAfter${props.splitAfter}`] : ''
-        ]">
-    <slot/>
+  <div
+    :class="[
+      $style.stack,
+      props.recursive ? $style.recursive : '',
+      props.splitAfter ? $style.splitAfter : '',
+      props.splitAfter ? $style[`splitAfter${props.splitAfter}`] : ''
+    ]"
+  >
+    <slot />
   </div>
 </template>
 

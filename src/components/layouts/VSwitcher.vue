@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {getEasyUID, insertCSS} from "@/assets/style/script";
-import {onMounted, useCssModule} from "vue";
+import { getEasyUID, insertCSS } from '@/assets/style/script'
+import { onMounted, useCssModule } from 'vue'
 
-const componentId = getEasyUID();
+const componentId = getEasyUID()
 const props = withDefaults(defineProps<{
   threshold?: string;
   space?: string;
@@ -11,10 +11,10 @@ const props = withDefaults(defineProps<{
   threshold: 'var(--measure)',
   space: 'var(--s0)',
   limit: 4
-});
+})
 
 onMounted(() => {
-  const style = useCssModule();
+  const style = useCssModule()
   const containerSwitcher = `
     .${style.switcher}[data-component-id="${componentId}"] > * {
       flex-grow: 1;
@@ -27,18 +27,20 @@ onMounted(() => {
       flex-basis: 100%;
     }
   `
-  insertCSS(containerSwitcher);
-  insertCSS(quantitySwitcher);
-});
+  insertCSS(containerSwitcher)
+  insertCSS(quantitySwitcher)
+})
 </script>
 
 <template>
-  <div :data-component-id="componentId"
-       :class="$style.switcher"
-       :style="{
-    gap: props.space
-  }">
-    <slot/>
+  <div
+    :data-component-id="componentId"
+    :class="$style.switcher"
+    :style="{
+      gap: props.space
+    }"
+  >
+    <slot />
   </div>
 </template>
 

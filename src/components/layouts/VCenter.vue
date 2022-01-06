@@ -9,21 +9,23 @@ const props = withDefaults(defineProps<{
   gutters: 'var(--s0)',
   andText: false,
   intrinsic: false
-});
+})
 </script>
 
 <template>
-  <div :class="[
-    $style.center,
-    props.intrinsic ? $style.intrinsic : '',
-    props.andText ? $style.andText : ''
-  ]"
-       :style="{
-    maxWidth: props.max,
-    paddingLeft: props.gutters,
-    paddingRight: props.gutters
-  }">
-    <slot/>
+  <div
+    :class="[
+      $style.center,
+      props.intrinsic ? $style.intrinsic : '',
+      props.andText ? $style.andText : ''
+    ]"
+    :style="{
+      maxWidth: props.max,
+      paddingLeft: props.gutters,
+      paddingRight: props.gutters
+    }"
+  >
+    <slot />
   </div>
 </template>
 

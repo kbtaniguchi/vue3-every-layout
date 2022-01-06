@@ -8,19 +8,21 @@ const props = withDefaults(defineProps<{
   padding: 'var(--s0)',
   borderWidth: 'var(--border-thin)',
   borderColor: 'var(--gray0)',
-  backgroundColor: 'inherit',
-});
+  backgroundColor: 'inherit'
+})
 </script>
 
 <template>
-  <div :class="$style.box"
-       :style="{
-    padding: props.padding,
-    borderWidth: props.borderWidth,
-    borderColor: props.borderColor,
-    backgroundColor: props.backgroundColor
-  }">
-    <slot/>
+  <div
+    :class="$style.box"
+    :style="{
+      padding: props.padding,
+      borderWidth: props.borderWidth,
+      borderColor: props.borderColor,
+      backgroundColor: props.backgroundColor
+    }"
+  >
+    <slot />
   </div>
 </template>
 

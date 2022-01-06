@@ -7,17 +7,19 @@ const props = withDefaults(defineProps<{
   justify: 'flex-start',
   align: 'flex-start',
   space: 'var(--s0)'
-});
+})
 </script>
 
 <template>
-  <div :class="$style.cluster"
-       :style="{
-  justifyContent: props.justify,
-  alignItems: props.align,
-  gap: props.space
-}">
-    <slot/>
+  <div
+    :class="$style.cluster"
+    :style="{
+      justifyContent: props.justify,
+      alignItems: props.align,
+      gap: props.space
+    }"
+  >
+    <slot />
   </div>
 </template>
 

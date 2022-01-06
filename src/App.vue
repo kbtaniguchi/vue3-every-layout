@@ -1,41 +1,45 @@
 <script setup lang="ts">
-import {ref} from "vue";
-import {useRoute} from "vue-router";
+import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 
-import VSidebar from "@/components/layouts/VSidebar.vue";
-import VStack from "@/components/layouts/VStack.vue";
-import VBox from "@/components/layouts/VBox.vue";
-import VCluster from "@/components/layouts/VCluster.vue";
-import VIcon from "@/components/layouts/VIcon.vue";
+import VSidebar from '@/components/layouts/VSidebar.vue'
+import VStack from '@/components/layouts/VStack.vue'
+import VCluster from '@/components/layouts/VCluster.vue'
+import VIcon from '@/components/layouts/VIcon.vue'
 
-const menuOpened = ref(true);
+const menuOpened = ref(true)
 
 const onHome = (): boolean => {
-  return useRoute().fullPath === '/';
-};
+  return useRoute().fullPath === '/'
+}
 
 const thisPageCategory = (): string | undefined => {
-  return useRoute().meta.category;
-
-};
+  return useRoute().meta.category
+}
 
 const toggleMenu = (): void => {
-  menuOpened.value = !menuOpened.value;
-};
+  menuOpened.value = !menuOpened.value
+}
 </script>
 
 <template>
   <VSidebar>
-    <nav v-if="menuOpened"
-         :class="$style.menu">
+    <nav
+      v-if="menuOpened"
+      :class="$style.menu"
+    >
       <VStack :split-after="7">
         <h1>
-          <router-link to="/">Vue3 Every Layout</router-link>
+          <router-link to="/">
+            Vue3 Every Layout
+          </router-link>
         </h1>
         <h2>Layout Primitives</h2>
         <ul>
           <li>
-            <router-link to="/stack">VStack</router-link>
+            <router-link to="/stack">
+              VStack
+            </router-link>
           </li>
           <li>VBox</li>
           <li>VCenter</li>
@@ -56,10 +60,14 @@ const toggleMenu = (): void => {
         <h2>Appendix</h2>
         <ul>
           <li>
-            <router-link to="/modular-scale">Modular Scale</router-link>
+            <router-link to="/modular-scale">
+              Modular Scale
+            </router-link>
           </li>
           <li>
-            <router-link to="/color-palette">Color Palette</router-link>
+            <router-link to="/color-palette">
+              Color Palette
+            </router-link>
           </li>
         </ul>
         <aside :class="$style.poweredBy">
@@ -74,11 +82,15 @@ const toggleMenu = (): void => {
       </VStack>
     </nav>
     <main :class="$style.mainContent">
-      <div v-if="!onHome()"
-           :class="$style.toolbar">
-        <VCluster space="var(--s-1)"
-                  align="center"
-                  justify="space-between">
+      <div
+        v-if="!onHome()"
+        :class="$style.toolbar"
+      >
+        <VCluster
+          space="var(--s-1)"
+          align="center"
+          justify="space-between"
+        >
           <VCluster>
             <span><router-link to="/">Home</router-link></span>
             <span>/</span>
@@ -87,14 +99,14 @@ const toggleMenu = (): void => {
           <button @click="toggleMenu">
             <VIcon>
               <svg>
-                <use href="@/assets/style/icons.svg#hamburger"></use>
+                <use href="@/assets/style/icons.svg#hamburger" />
               </svg>
               {{ menuOpened ? 'Hide Menu' : 'Show Menu' }}
             </VIcon>
           </button>
         </VCluster>
       </div>
-      <router-view/>
+      <router-view />
     </main>
   </VSidebar>
 </template>
