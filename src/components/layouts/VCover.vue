@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { insertCSS, getEasyUID } from '@/assets/style/script'
-import { onMounted, useCssModule } from 'vue'
-
-const componentId = getEasyUID()
 const props = withDefaults(defineProps<{
   centered?: string,
   space?: string,
@@ -14,46 +10,14 @@ const props = withDefaults(defineProps<{
   minHeight: '100vh',
   noPad: false
 })
-
-onMounted(() => {
-  const thisStyle = useCssModule()
-  const baseMargin = `
-  .${thisStyle.cover}[data-component-id="${componentId}"] > * {
-    margin-top: ${props.space};
-    margin-bottom: ${props.space};
-  }
-  `
-  const adjustFirstChildMargin = `
-  .${thisStyle.cover}[data-component-id="${componentId}"] > :first-child:not(${props.centered}) {
-    margin-top: 0;
-  }
-  `
-  const adjustLastChildMargin = `
-  .${thisStyle.cover}[data-component-id="${componentId}"] > :last-child:not(${props.centered}) {
-    margin-bottom: 0;
-  }
-  `
-  const adjustTargetMargin = `
-  .${thisStyle.cover}[data-component-id="${componentId}"] > ${props.centered} {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-  `
-  insertCSS(baseMargin)
-  insertCSS(adjustFirstChildMargin)
-  insertCSS(adjustLastChildMargin)
-  insertCSS(adjustTargetMargin)
-})
 </script>
 
 <template>
   <div
-    :data-component-id="componentId"
-    :class="$style.cover"
-    :style="{
-      minHeight: props.minHeight,
-      padding: props.noPad ? 0 : props.space
-    }"
+    :class="[
+      $style.cover,
+      $style[`${props.centered}-centered`]
+    ]"
   >
     <slot />
   </div>
@@ -63,5 +27,34 @@ onMounted(() => {
 .cover {
   display: flex;
   flex-direction: column;
+  min-height: v-bind("props.minHeight");
+  padding: v-bind("props.noPad ? 0 : props.space");
+}
+
+.cover > * {
+  margin-top: v-bind("props.space");
+  margin-bottom: v-bind("props.space");
+}
+
+.h1-centered > :first-child:not(h1),
+.h2-centered > :first-child:not(h2),
+.h3-centered > :first-child:not(h3),
+.div-centered > :first-child:not(div) {
+  margin-top: 0;
+}
+
+.h1-centered > :last-child:not(h1),
+.h2-centered > :last-child:not(h2),
+.h3-centered > :last-child:not(h3),
+.div-centered > :last-child:not(div) {
+  margin-bottom: 0;
+}
+
+.h1-centered > h1,
+.h2-centered > h2,
+.h3-centered > h3,
+.div-centered > div {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 </style>
