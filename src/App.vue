@@ -37,13 +37,25 @@ const toggleMenu = (): void => {
         <h2>Layout Primitives</h2>
         <ul>
           <li>
+            <router-link to="/box">
+              VBox
+            </router-link>
+          </li>
+          <li>
             <router-link to="/stack">
               VStack
             </router-link>
           </li>
-          <li>VBox</li>
-          <li>VCenter</li>
-          <li>VCluster</li>
+          <li>
+            <router-link to="/center">
+              VCenter
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/cluster">
+              VCluster
+            </router-link>
+          </li>
           <li>VSidebar</li>
           <li>VSwitcher</li>
           <li>VCover</li>

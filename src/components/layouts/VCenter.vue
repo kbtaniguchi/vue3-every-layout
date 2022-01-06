@@ -19,11 +19,6 @@ const props = withDefaults(defineProps<{
       props.intrinsic ? $style.intrinsic : '',
       props.andText ? $style.andText : ''
     ]"
-    :style="{
-      maxWidth: props.max,
-      paddingLeft: props.gutters,
-      paddingRight: props.gutters
-    }"
   >
     <slot />
   </div>
@@ -34,6 +29,10 @@ const props = withDefaults(defineProps<{
   box-sizing: content-box;
   margin-left: auto;
   margin-right: auto;
+
+  max-width: v-bind("props.max");
+  padding-left: v-bind("props.gutters");
+  padding-right: v-bind("props.gutters");
 }
 
 .intrinsic {

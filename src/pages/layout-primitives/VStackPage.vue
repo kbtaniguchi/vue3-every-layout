@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
+
 import VStack from '@/components/layouts/VStack.vue'
 import VBox from '@/components/layouts/VBox.vue'
 import VSidebar from '@/components/layouts/VSidebar.vue'
-import { reactive } from 'vue'
 
 const data = reactive<{
   space: string;
@@ -16,7 +17,7 @@ const data = reactive<{
 </script>
 
 <template>
-  <h2 :class="$style.title">
+  <h2 class="page-title">
     Stack
   </h2>
   <VSidebar
@@ -73,7 +74,7 @@ const data = reactive<{
           <a href="https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/components/layouts/VStack.vue">
             this component source
           </a>
-          <a href="https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/pages/layout-primitives/StackPage.vue">
+          <a href="https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/pages/layout-primitives/VStackPage.vue">
             this page source
           </a>
         </VStack>
@@ -83,10 +84,6 @@ const data = reactive<{
 </template>
 
 <style module>
-.title {
-  padding-bottom: var(--s0)
-}
-
 .inputField {
   min-height: 80vh
 }

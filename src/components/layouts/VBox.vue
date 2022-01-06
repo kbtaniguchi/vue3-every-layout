@@ -13,15 +13,7 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-  <div
-    :class="$style.box"
-    :style="{
-      padding: props.padding,
-      borderWidth: props.borderWidth,
-      borderColor: props.borderColor,
-      backgroundColor: props.backgroundColor
-    }"
-  >
+  <div :class="$style.box">
     <slot />
   </div>
 </template>
@@ -32,5 +24,9 @@ const props = withDefaults(defineProps<{
   --border-bold: 2px;
 
   border-style: solid;
+  padding: v-bind("props.padding");
+  border-width: v-bind("props.borderWidth");
+  border-color: v-bind("props.borderColor");
+  background-color: v-bind("props.backgroundColor");
 }
 </style>
