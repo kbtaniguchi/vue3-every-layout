@@ -18,6 +18,8 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "vue/script-setup-uses-vars": "error"
+    "func-call-spacing": "off",
+    "vue/script-setup-uses-vars": "error",
+    "@typescript-eslint/func-call-spacing": "error"
   }
 }
