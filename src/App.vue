@@ -64,7 +64,11 @@ const toggleMenu = (): void => {
             </router-link>
           </li>
           <li>VGrid</li>
-          <li>VFrame</li>
+          <li>
+            <router-link to="/frame">
+              VFrame
+            </router-link>
+          </li>
           <li>VReel</li>
           <li>VImposter</li>
           <li>VIcon</li>

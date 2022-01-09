@@ -4,16 +4,10 @@ const props = withDefaults(defineProps<{
 }>(), {
   ratio: '16:9'
 })
-const ratioSplit = props.ratio.split(':')
 </script>
 
 <template>
-  <div
-    :class="$style.frame"
-    :style="{
-      paddingBottom: `calc(${ratioSplit[1]} / ${ratioSplit[0]} * 100%)`
-    }"
-  >
+  <div :class="$style.frame">
     <slot />
   </div>
 </template>
@@ -21,6 +15,7 @@ const ratioSplit = props.ratio.split(':')
 <style module>
 .frame {
   position: relative;
+  padding-bottom: calc(v-bind("props.ratio.split(':')[1]") / v-bind("props.ratio.split(':')[0]") * 100%);
 }
 
 .frame > * {
