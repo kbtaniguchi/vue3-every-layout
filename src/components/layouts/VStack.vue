@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   space?: string;
   recursive?: boolean;
   splitAfter?: number; // now max 10
@@ -14,9 +14,9 @@ const props = withDefaults(defineProps<{
   <div
     :class="[
       $style.stack,
-      props.recursive ? $style.recursive : '',
-      props.splitAfter ? $style.splitAfter : '',
-      props.splitAfter ? $style[`splitAfter${props.splitAfter}`] : ''
+      recursive ? $style.recursive : '',
+      splitAfter ? $style.splitAfter : '',
+      splitAfter ? $style[`splitAfter${splitAfter}`] : ''
     ]"
   >
     <slot />
@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<{
 
 .stack > * + *,
 .recursive * + * {
-  margin-top: v-bind("props.space");
+  margin-top: v-bind(space);
 }
 
 .splitAfter:only-child {

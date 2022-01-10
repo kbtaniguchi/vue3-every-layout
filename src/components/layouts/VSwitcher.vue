@@ -1,45 +1,21 @@
 <script setup lang="ts">
-import { insertCSS } from '@/assets/style/script'
-import { onMounted, useCssModule } from 'vue'
-import { getEasyUID } from '@/assets/functions/utilities'
-
-const componentId = getEasyUID()
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   threshold?: string;
   space?: string;
-  limit?: number;
+  limit?: number; // now max 10
 }>(), {
   threshold: 'var(--measure)',
   space: 'var(--s0)',
   limit: 4
 })
-
-onMounted(() => {
-  const style = useCssModule()
-  const containerSwitcher = `
-    .${style.switcher}[data-component-id="${componentId}"] > * {
-      flex-grow: 1;
-      flex-basis: calc((${props.threshold} - 100%) * 999);
-    }
-  `
-  const quantitySwitcher = `
-    .${style.switcher}[data-component-id="${componentId}"] > :nth-last-child(n+${props.limit + 1}),
-    .${style.switcher}[data-component-id="${componentId}"] > :nth-last-child(n+${props.limit + 1}) ~ * {
-      flex-basis: 100%;
-    }
-  `
-  insertCSS(containerSwitcher)
-  insertCSS(quantitySwitcher)
-})
 </script>
 
 <template>
   <div
-    :data-component-id="componentId"
-    :class="$style.switcher"
-    :style="{
-      gap: props.space
-    }"
+    :class="[
+      $style.switcher,
+      $style[`limit${limit}`]
+    ]"
   >
     <slot />
   </div>
@@ -49,5 +25,34 @@ onMounted(() => {
 .switcher {
   display: flex;
   flex-wrap: wrap;
+  gap: v-bind(space);
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((v-bind(threshold) - 100%) * 999);
+}
+
+.limit1 > :nth-last-child(n+2),
+.limit1 > :nth-last-child(n+2) ~ *,
+.limit2 > :nth-last-child(n+3),
+.limit2 > :nth-last-child(n+3) ~ *,
+.limit3 > :nth-last-child(n+4),
+.limit3 > :nth-last-child(n+4) ~ *,
+.limit4 > :nth-last-child(n+5),
+.limit4 > :nth-last-child(n+5) ~ *,
+.limit5 > :nth-last-child(n+6),
+.limit5 > :nth-last-child(n+6) ~ *,
+.limit6 > :nth-last-child(n+7),
+.limit6 > :nth-last-child(n+7) ~ *,
+.limit7 > :nth-last-child(n+8),
+.limit7 > :nth-last-child(n+8) ~ *,
+.limit8 > :nth-last-child(n+9),
+.limit8 > :nth-last-child(n+9) ~ *,
+.limit9 > :nth-last-child(n+10),
+.limit9 > :nth-last-child(n+10) ~ *,
+.limit10 > :nth-last-child(n+11),
+.limit10 > :nth-last-child(n+11) ~ * {
+  flex-basis: 100%;
 }
 </style>

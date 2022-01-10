@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   centered?: string,
   space?: string,
   minHeight?: string,
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<{
   <div
     :class="[
       $style.cover,
-      $style[`${props.centered}-centered`]
+      $style[`${centered}-centered`]
     ]"
   >
     <slot />
@@ -27,13 +27,13 @@ const props = withDefaults(defineProps<{
 .cover {
   display: flex;
   flex-direction: column;
-  min-height: v-bind("props.minHeight");
-  padding: v-bind("props.noPad ? 0 : props.space");
+  min-height: v-bind(minHeight);
+  padding: v-bind("noPad ? 0 : space");
 }
 
 .cover > * {
-  margin-top: v-bind("props.space");
-  margin-bottom: v-bind("props.space");
+  margin-top: v-bind(space);
+  margin-bottom: v-bind(space);
 }
 
 .h1-centered > :first-child:not(h1),

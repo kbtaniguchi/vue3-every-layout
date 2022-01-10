@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   padding?: string;
   borderWidth?: string | 0;
   borderColor?: string;
@@ -24,9 +24,9 @@ const props = withDefaults(defineProps<{
   --border-bold: 2px;
 
   border-style: solid;
-  padding: v-bind("props.padding");
-  border-width: v-bind("props.borderWidth");
-  border-color: v-bind("props.borderColor");
-  background-color: v-bind("props.backgroundColor");
+  padding: v-bind(padding);
+  border-width: v-bind(borderWidth);
+  border-color: v-bind(borderColor);
+  background-color: v-bind(backgroundColor);
 }
 </style>

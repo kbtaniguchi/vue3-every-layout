@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   breakout?: boolean;
   margin?: string;
   fixed?: boolean;
@@ -12,17 +12,11 @@ const props = withDefaults(defineProps<{
 
 <template>
   <div
-    :class="$style.imposter"
-    :style="{
-      ...props.breakout ? {} : {
-        maxWidth: `calc(100% - (${props.margin} * 2))`,
-        maxHeight: `calc(100% - (${props.margin} * 2))`,
-        overflow: 'auto'
-      },
-      ...props.fixed ? {
-        position: 'fixed'
-      } : {}
-    }"
+    :class="[
+      $style.imposter,
+      breakout ? '' : $style.contain,
+      fixed ? $style.fixed : ''
+    ]"
   >
     <slot />
   </div>
@@ -34,5 +28,15 @@ const props = withDefaults(defineProps<{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.contain {
+  max-width: calc(100% - (v-bind(margin) * 2));
+  max-height: calc(100% - (v-bind(margin) * 2));
+  overflow: auto
+}
+
+.fixed {
+  position: fixed
 }
 </style>

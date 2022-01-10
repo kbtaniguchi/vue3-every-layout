@@ -56,26 +56,46 @@ const toggleMenu = (): void => {
               VCluster
             </router-link>
           </li>
-          <li>VSidebar</li>
-          <li>VSwitcher</li>
+          <li>
+            <router-link to="/sidebar">
+              VSidebar
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/switcher">
+              VSwitcher
+            </router-link>
+          </li>
           <li>
             <router-link to="/cover">
               VCover
             </router-link>
           </li>
-          <li>VGrid</li>
+          <li>
+            <router-link to="/grid">
+              VGrid
+            </router-link>
+          </li>
           <li>
             <router-link to="/frame">
               VFrame
             </router-link>
           </li>
-          <li>VReel</li>
-          <li>VImposter</li>
-          <li>VIcon</li>
-        </ul>
-        <h2>Composition Samples</h2>
-        <ul>
-          <li>under construction...</li>
+          <li>
+            <router-link to="/reel">
+              VReel
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/imposter">
+              VImposter
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/icon">
+              VIcon
+            </router-link>
+          </li>
         </ul>
         <h2>Appendix</h2>
         <ul>

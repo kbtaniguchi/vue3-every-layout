@@ -25,7 +25,7 @@ const props = defineProps<{
         <slot name="props" />
         <h3>Source</h3>
         <VStack space="var(--s-5)">
-          <a :href="`https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/components/layouts/${props.componentName}vue`">
+          <a :href="`https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/components/layouts/${props.componentName}.vue`">
             this component source
           </a>
           <a :href="`https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/pages/layout-primitives/${props.componentName}Page.vue`">

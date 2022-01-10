@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   max?: string;
   gutters?: string;
   andText?: boolean;
@@ -16,8 +16,8 @@ const props = withDefaults(defineProps<{
   <div
     :class="[
       $style.center,
-      props.intrinsic ? $style.intrinsic : '',
-      props.andText ? $style.andText : ''
+      intrinsic ? $style.intrinsic : '',
+      andText ? $style.andText : ''
     ]"
   >
     <slot />
@@ -30,9 +30,9 @@ const props = withDefaults(defineProps<{
   margin-left: auto;
   margin-right: auto;
 
-  max-width: v-bind("props.max");
-  padding-left: v-bind("props.gutters");
-  padding-right: v-bind("props.gutters");
+  max-width: v-bind(max);
+  padding-left: v-bind(gutters);
+  padding-right: v-bind(gutters);
 }
 
 .intrinsic {

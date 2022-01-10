@@ -108,7 +108,3 @@ ul, ol {
     outline-color: var(--gray0);
     outline-style: dashed;
 }
-
-.page-title {
-    padding-bottom: var(--s0)
-}

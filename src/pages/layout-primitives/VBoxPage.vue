@@ -52,7 +52,7 @@ const data = reactive<{
           type="text"
         >
       </VField>
-      <VField label="padding">
+      <VField label="backgroundColor">
         <input
           v-model="data.backgroundColor"
           type="text"

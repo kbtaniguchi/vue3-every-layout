@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   ratio?: string;
 }>(), {
   ratio: '16:9'
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<{
 <style module>
 .frame {
   position: relative;
-  padding-bottom: calc(v-bind("props.ratio.split(':')[1]") / v-bind("props.ratio.split(':')[0]") * 100%);
+  padding-bottom: calc(v-bind("ratio.split(':')[1]") / v-bind("ratio.split(':')[0]") * 100%);
 }
 
 .frame > * {

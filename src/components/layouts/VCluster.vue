@@ -1,7 +1,9 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-  justify?: string; // refs. https://developer.mozilla.org/ja/docs/Web/CSS/justify-content
-  align?: string; // refs. https://developer.mozilla.org/ja/docs/Web/CSS/align-items
+// refs. https://developer.mozilla.org/ja/docs/Web/CSS/justify-content
+// refs. https://developer.mozilla.org/ja/docs/Web/CSS/align-items
+withDefaults(defineProps<{
+  justify?: string;
+  align?: string;
   space?: string;
 }>(), {
   justify: 'flex-start',
@@ -21,8 +23,8 @@ const props = withDefaults(defineProps<{
   display: flex;
   flex-wrap: wrap;
 
-  justify-content: v-bind("props.justify");
-  align-items: v-bind("props.align");
-  gap: v-bind("props.space");
+  justify-content: v-bind(justify);
+  align-items: v-bind(align);
+  gap: v-bind(space);
 }
 </style>

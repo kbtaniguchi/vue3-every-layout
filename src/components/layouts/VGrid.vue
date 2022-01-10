@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   min?: string;
   space?: string;
 }>(), {
@@ -9,13 +9,7 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-  <div
-    :class="$style.grid"
-    :style="{
-      gridGap: props.space,
-      gridTemplateColumns: `repeat(auto-fit, minmax(min(${props.min}, 100%), 1fr))`
-    }"
-  >
+  <div :class="$style.grid">
     <slot />
   </div>
 </template>
@@ -23,5 +17,7 @@ const props = withDefaults(defineProps<{
 <style module>
 .grid {
   display: grid;
+  grid-gap: v-bind(space);
+  grid-template-columns: repeat(auto-fit, minmax(min(v-bind(min), 100%), 1fr));
 }
 </style>
