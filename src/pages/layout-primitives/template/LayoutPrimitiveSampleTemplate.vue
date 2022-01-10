@@ -19,7 +19,7 @@ const props = defineProps<{
     <div>
       <slot name="usage" />
     </div>
-    <div>
+    <div :class="$style.inputField">
       <VStack>
         <h3>Props</h3>
         <slot name="props" />
@@ -40,5 +40,9 @@ const props = defineProps<{
 <style module>
 .pageTitle {
   padding-bottom: var(--s0)
+}
+
+.inputField {
+  min-height: 80vh
 }
 </style>

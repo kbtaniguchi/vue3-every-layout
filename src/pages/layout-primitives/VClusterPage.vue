@@ -74,5 +74,4 @@ const data = reactive<{
 </template>
 
 <style module>
-
 </style>

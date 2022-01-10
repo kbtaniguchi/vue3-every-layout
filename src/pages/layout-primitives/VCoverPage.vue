@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-
-import VSidebar from '@/components/layouts/VSidebar.vue'
-import VStack from '@/components/layouts/VStack.vue'
 import VCover from '@/components/layouts/VCover.vue'
+import LayoutPrimitiveSampleTemplate from '@/pages/layout-primitives/template/LayoutPrimitiveSampleTemplate.vue'
+import VField from '@/components/parts/VField.vue'
 
 const data = reactive<{
   centered: string,
@@ -19,15 +18,8 @@ const data = reactive<{
 </script>
 
 <template>
-  <h2 class="page-title">
-    Cover
-  </h2>
-  <VSidebar
-    side-width="50%"
-    content-min="40%"
-    space="var(--s1)"
-  >
-    <div>
+  <LayoutPrimitiveSampleTemplate component-name="VCover">
+    <template #usage>
       <VCover
         class="with-outline"
         :centered="data.centered"
@@ -45,52 +37,35 @@ const data = reactive<{
           P
         </p>
       </VCover>
-    </div>
-    <div>
-      <VStack>
-        <h3>Props</h3>
-        <VStack space="var(--s-5)">
-          <label>centered</label>
-          <input
-            v-model="data.centered"
-            type="text"
-          >
-        </VStack>
-        <VStack space="var(--s-5)">
-          <label>space</label>
-          <input
-            v-model="data.space"
-            type="text"
-          >
-        </VStack>
-        <VStack space="var(--s-5)">
-          <label>minHeight</label>
-          <input
-            v-model="data.minHeight"
-            type="text"
-          >
-        </VStack>
-        <VStack space="var(--s-5)">
-          <label>noPad</label>
-          <input
-            v-model="data.noPad"
-            type="checkbox"
-          >
-        </VStack>
-        <h3>Source</h3>
-        <VStack space="var(--s-5)">
-          <a href="https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/components/layouts/VCover.vue">
-            this component source
-          </a>
-          <a href="https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/pages/layout-primitives/VCoverPage.vue">
-            this page source
-          </a>
-        </VStack>
-      </vstack>
-    </div>
-  </VSidebar>
+    </template>
+    <template #props>
+      <VField label="centered">
+        <input
+          v-model="data.centered"
+          type="text"
+        >
+      </VField>
+      <VField label="space">
+        <input
+          v-model="data.space"
+          type="text"
+        >
+      </VField>
+      <VField label="minHeight">
+        <input
+          v-model="data.minHeight"
+          type="text"
+        >
+      </VField>
+      <VField label="noPad">
+        <input
+          v-model="data.noPad"
+          type="checkbox"
+        >
+      </VField>
+    </template>
+  </LayoutPrimitiveSampleTemplate>
 </template>
 
 <style module>
-
 </style>
