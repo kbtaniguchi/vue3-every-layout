@@ -3,3 +3,8 @@ export function * range (start: number, end: number): Generator<number> {
     yield i
   }
 }
+
+export const getEasyUID = (): string => {
+  return new Date().getTime().toString(16) +
+        Math.floor(1000 * Math.random()).toString(16)
+}

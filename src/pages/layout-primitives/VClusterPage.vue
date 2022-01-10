@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-
-import VSidebar from '@/components/layouts/VSidebar.vue'
-import VStack from '@/components/layouts/VStack.vue'
 import VCluster from '@/components/layouts/VCluster.vue'
 import VBox from '@/components/layouts/VBox.vue'
+import LayoutPrimitiveSampleTemplate from '@/pages/layout-primitives/template/LayoutPrimitiveSampleTemplate.vue'
+import VField from '@/components/parts/VField.vue'
 
 const data = reactive<{
   justify?: string;
@@ -18,15 +17,8 @@ const data = reactive<{
 </script>
 
 <template>
-  <h2 class="page-title">
-    Cluster
-  </h2>
-  <VSidebar
-    side-width="50%"
-    content-min="40%"
-    space="var(--s1)"
-  >
-    <div>
+  <LayoutPrimitiveSampleTemplate component-name="VCluster">
+    <template #usage>
       <VCluster
         class="with-outline"
         :justify="data.justify"
@@ -41,57 +33,44 @@ const data = reactive<{
           <VBox>Nested Cluster BOX</VBox>
         </VCluster>
       </VCluster>
-    </div>
-    <div>
-      <VStack>
-        <h3>Props</h3>
-        <VStack space="var(--s-5)">
-          <label>justify
-            <a
-              href="https://developer.mozilla.org/ja/docs/Web/CSS/justify-content"
-              target="_blank"
-            >
-              ※
-            </a>
-          </label>
-          <input
-            v-model="data.justify"
-            type="text"
+    </template>
+    <template #props>
+      <VField label="justify">
+        <template #hint>
+          <a
+            href="https://developer.mozilla.org/ja/docs/Web/CSS/justify-content"
+            target="_blank"
           >
-        </VStack>
-        <VStack space="var(--s-5)">
-          <label>align
-            <a
-              href="https://developer.mozilla.org/ja/docs/Web/CSS/align-items"
-              target="_blank"
-            >
-              ※
-            </a>
-          </label>
-          <input
-            v-model="data.align"
-            type="text"
-          >
-        </VStack>
-        <VStack space="var(--s-5)">
-          <label>space</label>
-          <input
-            v-model="data.space"
-            type="text"
-          >
-        </VStack>
-        <h3>Source</h3>
-        <VStack space="var(--s-5)">
-          <a href="https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/components/layouts/VCluster.vue">
-            this component source
+            MDN: CSS - justify-content
           </a>
-          <a href="https://github.com/kbtaniguchi/vue3-every-layout/blob/main/src/pages/layout-primitives/VClusterPage.vue">
-            this page source
+        </template>
+        <input
+          v-model="data.justify"
+          type="text"
+        >
+      </VField>
+      <VField label="align">
+        <template #hint>
+          <a
+            href="https://developer.mozilla.org/ja/docs/Web/CSS/align-items"
+            target="_blank"
+          >
+            MDN: CSS - align-items
           </a>
-        </VStack>
-      </vstack>
-    </div>
-  </VSidebar>
+        </template>
+        <input
+          v-model="data.align"
+          type="text"
+        >
+      </VField>
+      <VField label="space">
+        <input
+          v-model="data.space"
+          type="text"
+        >
+      </VField>
+    </template>
+  </LayoutPrimitiveSampleTemplate>
 </template>
 
 <style module>

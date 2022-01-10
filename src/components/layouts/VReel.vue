@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { getEasyUID, insertCSS } from '@/assets/style/script'
+import { insertCSS } from '@/assets/style/script'
 import { onMounted, useCssModule } from 'vue'
+import { getEasyUID } from '@/assets/functions/utilities'
 
 const componentId = getEasyUID()
 const props = withDefaults(defineProps<{

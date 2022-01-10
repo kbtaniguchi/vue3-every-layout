@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-
 import VBox from '@/components/layouts/VBox.vue'
-
-import VTextField from '@/components/parts/VTextField.vue'
 import LayoutPrimitiveSampleTemplate from '@/pages/layout-primitives/template/LayoutPrimitiveSampleTemplate.vue'
+import VField from '@/components/parts/VField.vue'
 
 const data = reactive<{
   padding: string;
@@ -36,22 +34,30 @@ const data = reactive<{
       </VBox>
     </template>
     <template #props>
-      <VTextField
-        v-model="data.padding"
-        label="padding"
-      />
-      <VTextField
-        v-model="data.borderWidth"
-        label="borderWidth"
-      />
-      <VTextField
-        v-model="data.borderColor"
-        label="borderColor"
-      />
-      <VTextField
-        v-model="data.backgroundColor"
-        label="padding"
-      />
+      <VField label="padding">
+        <input
+          v-model="data.padding"
+          type="text"
+        >
+      </VField>
+      <VField label="borderWidth">
+        <input
+          v-model="data.borderWidth"
+          type="text"
+        >
+      </VField>
+      <VField label="borderColor">
+        <input
+          v-model="data.borderColor"
+          type="text"
+        >
+      </VField>
+      <VField label="padding">
+        <input
+          v-model="data.backgroundColor"
+          type="text"
+        >
+      </VField>
     </template>
   </LayoutPrimitiveSampleTemplate>
 </template>
